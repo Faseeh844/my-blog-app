@@ -150,3 +150,13 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
+
+# Tells Django to print emails to the console instead of sending them
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# allauth setting to disable email verification for now
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
+
+REST_AUTH = {
+    'REGISTER_SERIALIZER': 'api.serializers.CustomRegisterSerializer',
+}

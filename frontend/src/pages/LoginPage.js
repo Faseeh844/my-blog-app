@@ -1,5 +1,7 @@
+// frontend/src/pages/LoginPage.js
+
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom'; // 1. Import Link
 import apiClient from '../services/api';
 
 const LoginPage = ({ setAuth }) => {
@@ -16,8 +18,8 @@ const LoginPage = ({ setAuth }) => {
             });
             const token = response.data.key;
             localStorage.setItem('token', token);
-            setAuth(true); // Update auth state in App.js
-            navigate('/'); // Redirect to homepage
+            setAuth(true); 
+            navigate('/'); 
         } catch (error) {
             console.error('Login failed:', error);
             alert('Login failed! Please check your credentials.');
@@ -46,6 +48,10 @@ const LoginPage = ({ setAuth }) => {
                 <br />
                 <button type="submit">Login</button>
             </form>
+            {/* 2. Add the link to the signup page below the form */}
+            <p>
+                Don't have an account? <Link to="/signup">Sign Up</Link>
+            </p>
         </div>
     );
 };

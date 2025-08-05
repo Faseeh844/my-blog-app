@@ -10,7 +10,7 @@ const BlogListPage = () => {
         const fetchPosts = async () => {
             try {
                 const response = await apiClient.get('/posts/');
-                setPosts(response.data.results); // DRF pagination wraps results in a 'results' key
+                setPosts(response.data); 
                 setLoading(false);
             } catch (error) {
                 console.error('Failed to fetch posts:', error);
