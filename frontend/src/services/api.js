@@ -1,14 +1,24 @@
+// frontend/src/services/api.js
+
 import axios from 'axios';
 
-// Create an Axios instance
+// Determine the base URL based on the environment
+// React sets process.env.NODE_ENV to 'development' when you run `npm start`
+// and to 'production' when you run `npm run build` (which Vercel does).
+const apiURL = process.env.NODE_ENV === 'production'
+  ? 'https://my-blog-app-72v6.onrender.com/api' // Your live production backend URL
+  : 'http://127.0.0.1:8000/api';           // Your local development backend URL
+
+// Create an Axios instance with the dynamic baseURL
 const apiClient = axios.create({
-    baseURL: 'https://my-blog-backend.onrender.com/api', // <-- Your live backend URL
+    baseURL: apiURL,
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
 // Add a request interceptor to include the token in headers
+// (This part remains the same)
 apiClient.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('token');
