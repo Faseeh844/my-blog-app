@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sites', # Required by dj-rest-auth
     'allauth', # Required by dj-rest-auth
     'allauth.account', # Required by dj-rest-auth
+    'allauth.socialaccount',
     'dj_rest_auth.registration', # For registration
 
     # Your local app
