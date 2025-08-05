@@ -8,6 +8,7 @@ import BlogDetailPage from './pages/BlogDetailPage';
 import LoginPage from './pages/LoginPage';
 import CreatePostPage from './pages/CreatePostPage';
 import SignupPage from './pages/SignupPage'; // 1. Import the new page
+import './App.css';
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
