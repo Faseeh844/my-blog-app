@@ -4,6 +4,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from .models import Post
+from dj_rest_auth.serializers import UserDetailsSerializer
 
 # ===============================================================
 # Serializer for showing author details on a post
@@ -34,3 +35,7 @@ class CustomRegisterSerializer(RegisterSerializer):
 
     # By inheriting from RegisterSerializer, we get all the necessary fields
     # (username, email, password, password2) and validation logic.
+
+class CustomUserDetailsSerializer(UserDetailsSerializer):
+    class Meta(UserDetailsSerializer.Meta):
+        fields = UserDetailsSerializer.Meta.fields + ('is_superuser',)

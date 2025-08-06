@@ -156,4 +156,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 REST_AUTH = {
     'REGISTER_SERIALIZER': 'api.serializers.CustomRegisterSerializer',
+    'USER_DETAILS_SERIALIZER': 'api.serializers.CustomUserDetailsSerializer', # Add this line
 }
