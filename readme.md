@@ -1,26 +1,48 @@
-# My Blog App
+# Full-Stack Blog Platform (React + Django)
 
-A full-stack blog application built with a Django REST Framework backend and a React frontend. It allows users to register, log in, and perform CRUD (Create, Read, Update, Delete) operations on their blog posts.
+A comprehensive full-stack blog application featuring a robust Django REST Framework backend and a dynamic React frontend. This project implements complete user authentication, full CRUD (Create, Read, Update, Delete) functionality for posts, and a permission system that distinguishes between regular users and superusers. The application is fully containerized and deployed on the cloud.
 
-## Features
+---
 
-*   **User Authentication**: Secure user registration and login/logout functionality.
-*   **Post Management**: Authenticated users can create, view, update, and delete their own blog posts.
-*   **RESTful API**: A well-structured API for interacting with the backend.
-*   **Decoupled Frontend**: A modern single-page application built with React.
+## Live Demo Links
+
+* **Live Frontend (Vercel):** `https://my-blog-app-opal-pi.vercel.app/`
+* **Live Backend API (Render):** `https://my-blog-app-72v6.onrender.com/api/posts/`
+
+*(Note: The free backend service on Render may "spin down" after a period of inactivity. The first visit might take up to a minute to load as the server performs a "cold start".)*
+
+## Key Features
+
+-   **Secure User Authentication**: Full user registration and login system with token-based authentication.
+-   **Complete Blog Post Management**: Authenticated users can create and delete their own posts.
+-   **Advanced Permissions**:
+    -   Regular users can only delete their own posts.
+    -   Superusers have administrative privileges and can delete any post directly through the UI.
+-   **Publicly Viewable Content**: All blog posts are publicly accessible for reading.
+-   **RESTful API**: A well-structured backend API built with Django REST Framework for all operations.
+-   **Responsive Frontend**: A clean, modern, and mobile-friendly user interface built with React and styled with CSS.
+-   **Cloud Deployed**: The backend is deployed on Render with a PostgreSQL database, and the frontend is deployed on Vercel for optimal performance.
+-   **Automated Superuser Creation**: A Django data migration automatically creates a superuser on the production server using secure environment variables.
 
 ## Technology Stack
 
-*   **Backend**:
-    *   Python
-    *   Django & Django REST Framework
-    *   `dj-rest-auth` & `django-allauth` for authentication
-    *   SQLite3 (default development database)
+| Area      | Technologies & Services                                                                  |
+| :-------- | :--------------------------------------------------------------------------------------- |
+| **Frontend** | React.js, React Router, Axios, CSS                                                       |
+| **Backend** | Python, Django, Django REST Framework, Gunicorn                                          |
+| **Database** | PostgreSQL (Production), SQLite3 (Development)                                           |
+| **Auth** | `dj-rest-auth`, `django-allauth`                                                         |
+| **Deployment**| Vercel (Frontend), Render (Backend & Database), GitHub (CI/CD)                           |
 
-*   **Frontend**:
-    *   React
-    *   JavaScript (ES6+)
-    *   `create-react-app`
+## API Endpoints
+
+The core API endpoints provided by the backend are:
+
+*   `POST /api/auth/registration/` - Register a new user.
+*   `POST /api/auth/login/` - Log in to get an auth token.
+*   `POST /api/auth/logout/` - Log out and invalidate the token.
+*   `GET, POST /api/posts/` - List all posts or create a new one.
+*   `GET, PUT, DELETE /api/posts/<id>/` - Retrieve, update, or delete a specific post.
 
 ## Prerequisites
 
@@ -34,9 +56,10 @@ Follow these steps to get your development environment set up.
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/your-username/my-blog-app.git
     cd my-blog-app
     ```
+    *(Replace `your-username` with your actual GitHub username or the correct repository URL)*
 
 ### Backend Setup (Django)
 
@@ -86,13 +109,3 @@ Follow these steps to get your development environment set up.
     npm start
     ```
     The React application will now be running and will open automatically at `http://localhost:3000/`.
-
-## API Endpoints
-
-The core API endpoints provided by the backend are:
-
-*   `POST /api/auth/registration/` - Register a new user.
-*   `POST /api/auth/login/` - Log in to get an auth token.
-*   `POST /api/auth/logout/` - Log out and invalidate the token.
-*   `GET, POST /api/posts/` - List all posts or create a new one.
-*   `GET, PUT, DELETE /api/posts/<id>/` - Retrieve, update, or delete a specific post.
