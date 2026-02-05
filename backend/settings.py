@@ -140,7 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000').split(',')
-CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000,my-blog-app-72v6.onrender.com,https://blog.faseeh.site,https://faseeh.site').split(',')
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000,my-blog-app-72v6.onrender.com,https://blog.faseeh.site,https://faseeh.site,https://my-blog-l8c855dl3-faseehs-projects-dd7e62d3.vercel.app').split(',')
 
 
 REST_FRAMEWORK = {
