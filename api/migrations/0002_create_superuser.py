@@ -3,19 +3,22 @@ import os
 
 def create_superuser(apps, schema_editor):
     """
-    Creates a superuser using credentials from environment variables.
+    Creates a superuser using credentials from environment variables,
+    but only if the 'RENDER' environment variable is present.
     """
+    # Only run this migration in a Render environment
+    if 'RENDER' not in os.environ:
+        print("Skipping superuser creation: 'RENDER' env var not set.")
+        return
+
     # Get the User model from the historical app registry
     User = apps.get_model('auth', 'User')
 
     try:
-        # Use direct dictionary access, which will raise an error if the variable is not set
-        # This is more secure as it prevents running without required secrets.
         ADMIN_USERNAME = os.environ['ADMIN_USERNAME']
         ADMIN_EMAIL = os.environ['ADMIN_EMAIL']
         ADMIN_PASSWORD = os.environ['ADMIN_PASSWORD']
     except KeyError as e:
-        # Provide a helpful error message during deployment if a variable is forgotten
         raise KeyError(f"Please set the {e} environment variable on your Render service.") from e
 
     # Create the superuser only if a user with that username does not already exist
