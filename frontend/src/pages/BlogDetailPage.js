@@ -22,7 +22,15 @@ const BlogDetailPage = ({ currentUser }) => {
     }, [id, navigate]);
 
     const handleDelete = async () => {
-        // ... (handleDelete function remains the same)
+        if (window.confirm('Are you sure you want to delete this post?')) {
+            try {
+                await apiClient.delete(`/posts/${id}/`);
+                navigate('/'); // Redirect to blog list after deletion
+            } catch (error) {
+                console.error('Failed to delete the post:', error);
+                // Optionally: show an error message to the user
+            }
+        }
     };
 
     if (!post) return <p>Loading...</p>;
